@@ -42,11 +42,7 @@ var malla = new THREE.Mesh(forma);
 
 
 escena.add(malla);
-function render(){ 
-  requestAnimationFrame(render);
-  renderer.render(escena, camara);
-}
-render();
+
 
 // Script3
 
@@ -57,6 +53,8 @@ function loop() {
   
   renderer.render(escena,camara);
 }
+
+loop();
 
 </script>
 
