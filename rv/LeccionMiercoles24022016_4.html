@@ -30,6 +30,8 @@ document.body.appendChild(renderer.domElement);
 
 //Script2
 
+var figura= new THREE.Shape();
+
 figura.moveTo(10,10);
 figura.LineTo(10,40);
 figura.LineTo(40,40);
@@ -48,8 +50,8 @@ render();
 
 // Script3
 
-function render() {
-  requestAnimationFrame ( render);
+function loop() {
+  requestAnimationFrame ( loop );
   cubo.rotation.x += 0.1;
   cubo.rotation.y += 0.1;
   
