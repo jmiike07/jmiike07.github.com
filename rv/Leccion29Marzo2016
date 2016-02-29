@@ -1,0 +1,10 @@
+function Persona (nombre, apellido, edad){
+this.nombre= nombre;
+this.apellido = apellido;
+this.edad=edad;
+this.diEdad=function(){
+console.log("Mi edad es", this.edad);
+}
+}
+var miPadre= new Persona('Oropeza', 'Gonzalez', 74);
+miPadre.diEdad();
