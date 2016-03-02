@@ -1,4 +1,4 @@
-funcion setup () {
+function setup () {
 
 //Se plantea las geometrias a utilizar
 
