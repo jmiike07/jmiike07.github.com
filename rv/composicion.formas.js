@@ -30,7 +30,7 @@ THREE.GeometryUtils.merge(forma, cilindro);
 
 malla= new THREE.Mesh(forma);
 
-/
+//
 
 //Se inicializa la escena y se agrega la malla a esta.
 
