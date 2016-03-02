@@ -46,7 +46,7 @@ document.body.appendChild(renderer.domElement);
 }
 
 function loop() {
-  RrequestAnimationFrame(loop);
+  requestAnimationFrame(loop);
   
   //Es importante notar que las rotaciuons son sobre los ejes que estan fijos
   //a la malla, no los ejes del lienzo. Inicialmente
