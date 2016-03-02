@@ -30,9 +30,14 @@ THREE.GeometryUtils.merge(forma, cilindro);
 
 malla= new THREE.Mesh(forma);
 
+/
+
 //Se inicializa la escena y se agrega la malla a esta.
 
-escena= new THREE.PerspectiveCamera();
+escena= new THREE.Scene();
+escena.add(malla);
+
+camara=new THREE.PerspectiveCamera();
 camara.position.z=10;
 //
 renderer= new THREE.WebGLRenderer();
