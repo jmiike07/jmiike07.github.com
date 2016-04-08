@@ -1,0 +1,202 @@
+<!doctype.html>
+<html>
+	<head>
+	 <title>Ejemplo Detección de choques 4</title>
+	 <meta http-equiv="Content-Type"
+		content="text/html; charset=UTF-8">
+	 <style>
+	    body { margin: 0; }
+	    canvas { width: 100%; height: 100%; }
+	 </style>
+	</head>
+	<body>
+	  <script src="three.min.js"> </script>
+	  <script>
+
+		var camara, escena, renderer;
+		escena= new THREE.Scene();
+		var fov = 100; //Campo de Vision (field of view), en grados
+		var aspect = window.innerWidth / window.innerHeight; //Relacion de aspecto
+		var near = .1; //Plano Cercano
+		var far = 1000; //Plano lejano
+		camara = new THREE.PerspectiveCamera( fov,
+							  aspect,
+						 	  near,
+							  far );
+		camara.position.x = 5;
+		camara.position.y = 5;
+		camara.position.z = 5;
+		renderer = new THREE.WebGLRenderer();
+		renderer.setSize (window.innerWidth, window.innerHeight );
+		document.body.appendChild( renderer.domElement );
+		
+		//Constructores
+		//////////////////////////pelota//////////////////////////
+		function Pelota(radio,posx,posy,color){
+        var _radio=radio;
+        var _color=color;
+        var _posx=posx;
+        var _posy=posy;
+        this.malla=new THREE.Mesh(new THREE.SphereGeometry(radio, 32, 32),new THREE.MeshLambertMaterial(color));
+        this.malla.position.x=posx;
+        this.malla.position.y=posy;
+        this.setPosx=function(posx){
+          _posx=posx;
+        }
+        this.setPosy=function(posy){
+          _posy=posy;
+        }
+        this.getPosx=function(){
+          return _posx;
+        }
+        this.getPosy=function(){
+          return _posy;
+        }
+        this.setColor=function(color){
+          _color=color;
+        }
+      }
+      //////////////////////////////////////////////////////
+    var pelota = new Pelota(.20,7,5,0xffff00);
+    
+		
+		var parediz= new THREE.Mesh(new THREE.BoxGeometry(.5, 10, .5),new THREE.MeshLambertMaterial({color: 0x00ffff}));
+		var pareds= new THREE.Mesh(new THREE.BoxGeometry(10, .5, .5),new THREE.MeshLambertMaterial({color: 0x00ffff}));
+		var paredin= new THREE.Mesh(new THREE.BoxGeometry(10, .5, .5),new THREE.MeshLambertMaterial({color: 0x00ffff}));
+		var bloque= new THREE.Mesh(new THREE.BoxGeometry(.25, 2, .5),new THREE.MeshLambertMaterial({color: 0x0000ff}));
+		
+		//ILUMINCACION
+		var luzpuntual=new THREE.PointLight(0xffffff);
+		luzpuntual.position.x=5;
+		luzpuntual.position.y=5;
+		luzpuntual.position.z=10;
+		escena.add(luzpuntual);
+		
+		parediz.position.x=-.125; parediz.position.y=5;
+		pareds.position.x=5; pareds.position.y=9.75;
+		paredin.position.x=5; paredin.position.y=.25;
+		bloque.position.x=10.125; bloque.position.y=5;
+		
+		escena.add(pelota.malla);
+	
+		escena.add(parediz);
+		escena.add(pareds);
+		escena.add(paredin);
+		escena.add(bloque);
+		escena.add(camara);
+		
+		//*Ray Casting* o trazado de rayo es una técnica que se utiliza para determinar la intersección
+		
+		var raycaster1=new THREE.Raycaster(pelota.malla.position, new THREE.Vector3(-1,0,0)); //pared izquierda
+		var raycaster2=new THREE.Raycaster(pelota.malla.position, new THREE.Vector3(0,1,0)); //pared superior
+		var raycaster3=new THREE.Raycaster(pelota.malla.position, new THREE.Vector3(1,0,0)); //bloque movil
+		var raycaster4=new THREE.Raycaster(pelota.malla.position, new THREE.Vector3(0,-1,0)); //pared inferior
+		
+		
+		var stepx=-0.045;
+		var stepy=-0.055;
+		var stepx2=-0.045;
+		var stepy2=-0.065;
+		var flag=-1;
+		
+		//Control teclado para mover el bloque
+		document.onkeydown=teclado;
+    function teclado(evento){
+      evento=evento||window.event;
+    	var paso=0.375;
+    	if(evento.keyCode=='38'){  //flecha arriba   
+    		bloque.position.y += paso;
+    	}
+    	else if(evento.keyCode=='40'){  //flecha abajo
+    		bloque.position.y -= paso;
+    	}
+    }
+    
+		//Animación
+		function loop(){
+		  requestAnimationFrame( loop );
+		  //Determinar las interacciones entre los objetos de la escena por medio del rayo trazado
+		  var interseccion1=raycaster1.intersectObject(parediz);
+		  var interseccion2=raycaster2.intersectObject(pareds);
+		  var interseccion3=raycaster3.intersectObject(bloque);
+		  var interseccion4=raycaster4.intersectObject(paredin);
+		  var interseccion21=raycaster21.intersectObject(parediz);
+		  var interseccion22=raycaster22.intersectObject(pareds);
+		  var interseccion23=raycaster23.intersectObject(bloque);
+		  var interseccion24=raycaster24.intersectObject(paredin);
+		  
+		  if((interseccion1.length>0 && interseccion1[0].distance<=.25)||
+		    (interseccion3.length>0 && interseccion3[0].distance<=.25)){
+		  stepx=-stepx;
+		    if (stepx<0){
+		      stepx=stepx-.009; //aumentar la velocidad en cada golpe a la pelota
+		    }
+      }
+      
+      if((interseccion2.length>0 && interseccion2[0].distance<=.25)||
+		    (interseccion4.length>0 && interseccion4[0].distance<=.25)){
+		  stepy=-stepy;
+      }
+      
+      if((interseccion21.length>0 && interseccion21[0].distance<=.25)||
+		    (interseccion23.length>0 && interseccion23[0].distance<=.25)){
+		  stepx2=-stepx2;
+		    if (stepx2<0){
+		      stepx2=stepx2-.009; //aumentar la velocidad en cada golpe a la pelota
+		    }
+      }
+      
+      if((interseccion22.length>0 && interseccion22[0].distance<=.25)||
+		    (interseccion24.length>0 && interseccion24[0].distance<=.25)){
+		  stepy2=-stepy2;
+      }
+    
+     /*pelota.setPosx(pelota.getPosx+stepx); 
+     pelota.setPosy(pelota.getPosY+stepy);
+     
+		 pelota.malla.position.x += stepx;
+		 
+		 pelota.malla.position.y += stepy;
+		
+		 
+		 //Reiniciar Juego, posición pelota
+		 //cambia color cada que se pierde.
+	   // Se reinicia a nivel inicial, velocidad mas baja
+		 if(pelota.malla.position.x>=14){
+		    flag=-flag;
+        pelota.malla.position.x=7;		pelota.malla.position.y=5;
+        
+        stepx=-0.045;
+		    stepy=-0.055;
+		    stepx2=-0.045;
+		    stepy2=-0.065;
+		    if (flag<0){
+		    pelota.malla.material=new THREE.MeshLambertMaterial({color: 0xffff00});
+		    
+		    parediz.material=new THREE.MeshLambertMaterial({color: 0x00ffff});
+		    pareds.material=new THREE.MeshLambertMaterial({color: 0x00ffff});
+		    paredin.material=new THREE.MeshLambertMaterial({color: 0x00ffff});
+		    bloque.material=new THREE.MeshLambertMaterial({color: 0x0000ff});
+		    }
+		    if (flag>0){
+		    pelota.malla.material=new THREE.MeshLambertMaterial({color: 0x0000ff});
+		    parediz.material=new THREE.MeshLambertMaterial({color: 0xffff00});
+		    pareds.material=new THREE.MeshLambertMaterial({color: 0xffff00});
+		    paredin.material=new THREE.MeshLambertMaterial({color: 0xffff00});
+		    bloque.material=new THREE.MeshLambertMaterial({color: 0xff00ff});
+		    }
+		 }
+
+		 raycaster1.set(pelota.malla.position, new THREE.Vector3(-1,0,0)); //pared izquierda
+		 raycaster2.set(pelota.malla.position, new THREE.Vector3(0,1,0)); //pared superior
+		 raycaster3.set(pelota.malla.position, new THREE.Vector3(1,0,0)); //bloque movil
+		 raycaster4.set(pelota.malla.position, new THREE.Vector3(0,-1,0)); //pared inferior
+		 
+		  
+		  renderer.render( escena, camara);
+		}
+		
+		loop();
+	  </script>
+	</body>
+</html>
