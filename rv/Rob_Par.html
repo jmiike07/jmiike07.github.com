@@ -52,6 +52,33 @@ this.add(this.pierna);
 this.add(this.pie);
 }
 
+
+
+
+
+
+
+function loop(){
+requestAnimationFrame (loop);
+
+renderer.render(escena, camara);
+if (Math.abs(piernaD.rotation.z) >.5)
+step=-step;
+piernaD.rotation.z += step;
+piernaI.rotation.z -= step;
+}
+
+var escena, camara, renderer;
+var step, piernaD, piernaI, pared1, pared2;
+
+
+
+
+
+
+setup();
+loop();
+
 Pierna.prototype= new THREE.Object3D();
 
 function setup(){
@@ -152,37 +179,6 @@ document.body.appendChild (renderer.domElement);
 //FIN
 
 
-
-
-
-
-
-
-
-
-
-
-
-function loop(){
-requestAnimationFrame (loop);
-
-renderer.render(escena, camara);
-if (Math.abs(piernaD.rotation.z) >.5)
-step=-step;
-piernaD.rotation.z += step;
-piernaI.rotation.z -= step;
-}
-
-var escena, camara, renderer;
-var step, piernaD, piernaI, pared1, pared2;
-
-
-
-
-
-
-setup();
-loop();
 
 
 
