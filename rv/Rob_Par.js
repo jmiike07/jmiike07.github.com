@@ -25,7 +25,12 @@ function Pared (size,x,y){
     	}
 
 
+var pared1 = new Pared(1,7,0);
+var pared2 = new Pared(1,-7,0);
+      
 
+escena.add(pared1);
+escena.add(pared2);
 
 
 
@@ -67,14 +72,9 @@ piernaI.rotation.z -= step;
 }
 
 var escena, camara, renderer;
-var step, piernaD, piernaI;
+var step, piernaD, piernaI, pared1, pared2;
 
-var pared1 = new Pared(1,7,0);
-var pared2 = new Pared(1,-7,0);
-      
 
-escena.add(pared1);
-escena.add(pared2);
 
 
 
