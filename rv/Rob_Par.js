@@ -28,7 +28,7 @@ function Pared (size,x,y){
 var pared1 = new Pared(1,7,0);
 var pared2 = new Pared(1,-7,0);
       
-
+escena= new THREE.Scene();
 escena.add(pared1);
 escena.add(pared2);
 
