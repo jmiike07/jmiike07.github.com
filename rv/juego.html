@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <title>Ejemplo Tile 02</title>
+        <script type="text/javascript" src="./Sprite.js"></script>
+        
+        <script>
+            var mundo;
+            var Sprites;
+            var Imagenes;
+            
+            window.onload=function(){
+                Imagenes=new AlmacenImagenes();
+                Sprites=new AlmacenSprites();
+                
+                Imagenes.cargar(
+                    [
+                        ["calvo","./sprite_player.png"],
+                        ["mario","./mario.png"]
+                    ]);
+                Imagenes.completado=function(){
+                    var spriteJugadorTrans=new Sprite(Imagenes.get("calvo"));
+                    spriteJugadorTrans.createDireccion(4,8,15,2,11,7,{"arriba":3,"abajo":0,"derecha":2,"izquierda":1});
+                    Sprites.add("jugador",spriteJugadorTrans);
+                    mundo=new Mundo("micanvas","parar");
+                    
+                    document.getElementById("transparente").onclick=function(){
+                        mundo.detener();
+                        
+                        var spriteJugadorTrans=new Sprite(Imagenes.get("calvo"));
+                        spriteJugadorTrans.createDireccion(4,8,15,2,11,7,{"arriba":3,"abajo":0,"derecha":2,"izquierda":1});
+                        Sprites.add("jugador",spriteJugadorTrans);
+                        
+                        mundo=new Mundo("micanvas","parar");
+                    };
+                    document.getElementById("puntoapunto").onclick=function(){
+                        mundo.detener();
+                        
+                        var spriteJugadorTrans=new Sprite(Imagenes.get("calvo"));
+                        spriteJugadorTrans.setDireccion("arriba",[[12,233,42,287],[64,233,94,287],[116,233,145,287],[166,233,196,287],[217,233,247,287],[270,233,300,287],[321,233,350,287],[374,233,404,287]]);
+                        spriteJugadorTrans.setDireccion("abajo",[[12,15,45,70],[64,15,95,70],[113,15,145,70],[164,15,195,70],[217,15,250,70],[272,15,305,70],[321,15,354,70],[373,15,404,70]]);
+                        spriteJugadorTrans.setDireccion("derecha",[[12,156,37,213],[68,156,94,213],[114,156,140,213],[164,156,191,213],[218,156,244,213],[272,156,303,213],[322,156,355,213],[376,156,402,213]]);
+                        spriteJugadorTrans.setDireccion("izquierda",[[19,84,38,140],[61,84,89,140],[120,84,145,140],[170,84,197,140],[222,84,244,140],[270,84,300,140],[322,84,354,140],[377,84,402,140]]);
+                        Sprites.add("jugador",spriteJugadorTrans);
+                        
+                        mundo=new Mundo("micanvas","parar");
+                    };
+                    document.getElementById("coloreado").onclick=function(){
+                        mundo.detener();
+                        
+                        var spriteJugadorTrans=new Sprite(Imagenes.get("mario"));
+                        spriteJugadorTrans.createDireccion(4,6,5,0,6,6,{"arriba":0,"abajo":2,"derecha":1,"izquierda":3});
+                        Sprites.add("jugador",spriteJugadorTrans);
+                        
+                        mundo=new Mundo("micanvas","parar");
+                    };
+                };
+                            
+            };
+            function log(texto,nueva){
+                var capa=document.getElementById("log");
+                if (nueva)
+                    capa.innerHTML+="<br/>"+texto;
+                else
+                    capa.innerHTML=texto;
+            }
+        </script>
+    </head>
+
+    <body>
+        <canvas id="micanvas"></canvas>
+        <div id ="log"></div>
+        <button id="transparente">Sprite transparente</button><button id="puntoapunto">Sprite Punto a punto</button><button id="coloreado">Sprite coloreado</button><button id="parar">Parar</button>
+    </body>
+</html>
