@@ -7,7 +7,7 @@ function Cilindro(){
   Cilindro.prototype=new THREE.Object3D();
   
   function setup(){
-  cilindroT = new cilindro();
+  cilindroT = new Cilindro();
   
   luzPuntual = new THREE.PointLight(0xffffff);
   luzPuntual.position.x=10;
