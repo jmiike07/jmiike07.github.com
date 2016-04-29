@@ -29,7 +29,7 @@ function loop(){
   chkIluminacion=document.getElementById("lighting");
   
   
-        if (chkBlending.checked)
+        if (chkIluminacion.checked)
         {
             cubo.material.transparent = true;
             cubo.material.opacity = parseFloat(txtBlending.value);
