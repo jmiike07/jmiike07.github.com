@@ -1,6 +1,6 @@
 function Cilindro(){
   THREE.Object3D.call(this);
-  this.cilindro=new THREE.Mesh(new THREE.CylinderGeometry(2.5, 2.5, 4.5), new THREE.MeshLambertMaterial( { color: 0xdddddd,opacity: 0.4,transparent: true ,specular: 0x009900, shininess: 30, shading: THREE.FlatShading } ));
+  this.cilindro=new THREE.Mesh(new THREE.CylinderGeometry(2.5, 2.5, 4.5), new THREE.MeshLambertMaterial( { color: 0xdd0ddd,opacity: 0.4,transparent: true } ));
   this.add(this.cilindro)
   }
   
