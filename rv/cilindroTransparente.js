@@ -1,6 +1,6 @@
 function Cilindro(){
   THREE.Object3D.call(this);
-  this.cilindro=new THREE.Mesh(new THREE.CylinderGeometry(2.5, 2.5, 4.5), new THREE.MeshLambertMaterial( { color: 0xdddddd, specular: 0x009900, shininess: 30, shading: THREE.FlatShading } ));
+  this.cilindro=new THREE.Mesh(new THREE.CylinderGeometry(2.5, 2.5, 4.5), new THREE.MeshLambertMaterial( { color: 0xdddddd,opacity: 0.4,transparent: true ,specular: 0x009900, shininess: 30, shading: THREE.FlatShading } ));
   this.add(this.cilindro)
   }
   
@@ -26,20 +26,7 @@ function Cilindro(){
 
 function loop(){
 
-  chkIluminacion=document.getElementById("lighting");
-  
-  
-        if (chkIluminacion.checked)
-        {
-            cubo.material.transparent = true;
-            cubo.material.opacity = parseFloat(txtBlending.value);
-        }
-        else
-        {
-            cubo.material.transparent = false;
-            cubo.material.opacity = 1.0;
-        }
-        cubo.material.needsUpdate = true;
+ cilindroT.rotation.x+=0.01;
 
 }
 
