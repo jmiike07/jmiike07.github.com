@@ -4,7 +4,7 @@ function Cilindro(){
   this.add(this.cilindro)
   }
   
-  cilindro.prototype=new THREE.Object3D();
+  Cilindro.prototype=new THREE.Object3D();
   
   function setup(){
   cilindroT = new cilindro();
