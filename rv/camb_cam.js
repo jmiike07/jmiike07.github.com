@@ -37,13 +37,13 @@ escena.add(floor);
 escena.add(malla);
 escena.add(malla2);
 
-//var fov=75;
-//var aspect=window.innerWidth/window.innerHeight;
-//var near=0.1;
-//var far=1000;
+var fov=75;
+var aspect=window.innerWidth/window.innerHeight;
+var near=0.1;
+var far=1000;
 
-	camara = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, - 500, 1000 );
-		camara.position.z=5;
+camara=new THREE.PerspectiveCamera(fov,aspect,near,far);
+camara.position.z=20;
 camara.position.x=0;
 camara.position.y=0;
 
@@ -84,7 +84,7 @@ function loop()
   //camara.position.z = Math.cos( timer ) * 100;
   //camara.position.y = Math.sin( timer ) * 100;
   //camara.lookAt( escena.position );
-  camara.rotation.x=Math.PI/6;
+  camara.rotation.z=Math.PI/6;
   renderer.render(escena,camara);
 }
 
