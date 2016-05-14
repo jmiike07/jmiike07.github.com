@@ -81,12 +81,14 @@ renderer.shadowMap.enabled=true;
 function loop()
 {
   requestAnimationFrame(loop);
+  paso=0.01;
   var timer = Date.now() * 0.0001;
   //camara.position.z = Math.cos( timer ) * 100;
   //camara.position.y = Math.sin( timer ) * 100;
   //camara.lookAt( escena.position );
-  camara.position.z=Math.cos( timer ) * 40;
+  camara.position.z=Math.cos( timer ) * 30;
    camara.position.x=Math.cos( timer ) * 20;
+   camara.rotation.z += paso;
   renderer.render(escena,camara);
 }
 
