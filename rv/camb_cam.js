@@ -9,7 +9,7 @@ var material=new THREE.MeshPhongMaterial({color: 0xFF4500});
 var floor=new THREE.Mesh(new THREE.BoxGeometry(35,35,10), new THREE.MeshPhongMaterial({map: texture}));
 floor.position.z=-10;
 floor.position.x=-1;
-floor.position.y=15;
+floor.position.y=0;
 
 
 luzPuntual=new THREE.PointLight(0xFFFFFF);
@@ -19,13 +19,13 @@ luzPuntual.position.z=100;
 
 malla=new THREE.Mesh(forma,material);
 malla.position.x=-1;
-malla.position.y=10;
+malla.position.y=0;
 malla.position.z=7;
 malla.rotation.x=Math.PI/2;
 
 malla2=new THREE.Mesh(forma2,material);
 malla2.position.x=2;
-malla2.position.y=5;
+malla2.position.y=2;
 malla2.position.z=7;
 malla2.rotation.x=Math.PI/2;
 
