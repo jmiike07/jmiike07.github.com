@@ -43,7 +43,7 @@ escena.add(malla2);
 //var far=1000;
 
 	camara = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, - 500, 1000 );
-		camara.position.z=20;
+		camara.position.z=5;
 camara.position.x=0;
 camara.position.y=0;
 
