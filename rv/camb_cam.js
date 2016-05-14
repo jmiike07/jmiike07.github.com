@@ -46,6 +46,7 @@ camara=new THREE.PerspectiveCamera(fov,aspect,near,far);
 camara.position.z=20;
 camara.position.x=0;
 camara.position.y=0;
+camara.rotation.x=Math.PI/6;
 
 
 //var Perspectiva=new THREE.PerspectiveCamera(fov,aspect,near,far);
