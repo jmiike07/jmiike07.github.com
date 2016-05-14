@@ -44,9 +44,9 @@ var far=1000;
 
 	camara=new THREE.PerspectiveCamera(fov,aspect,near,far);
 		camara.position.z=20;
-camara.position.x=0;
-camara.position.y=0;
-camara.rotation.x=Math.PI/6;
+//camara.position.x=0;
+//camara.position.y=0;
+//camara.rotation.x=Math.PI/6;
 
 //var Perspectiva=new THREE.PerspectiveCamera(fov,aspect,near,far);
 //var Orientada=new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, - 500, 1000 ); 
@@ -80,6 +80,9 @@ renderer.shadowMap.enabled=true;
 function loop()
 {
   requestAnimationFrame(loop);
+  camara.position.x = Math.cos( timer ) * 200;
+  camara.position.z = Math.sin( timer ) * 200;
+  camara.lookAt( escena.position );
   renderer.render(escena,camara);
 }
 
