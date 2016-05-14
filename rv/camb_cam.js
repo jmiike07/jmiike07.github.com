@@ -80,6 +80,7 @@ renderer.shadowMap.enabled=true;
 function loop()
 {
   requestAnimationFrame(loop);
+  var timer = Date.now() * 0.0001;
   camara.position.x = Math.cos( timer ) * 200;
   camara.position.z = Math.sin( timer ) * 200;
   camara.lookAt( escena.position );
