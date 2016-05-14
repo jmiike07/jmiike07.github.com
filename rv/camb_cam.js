@@ -43,7 +43,7 @@ var near=0.1;
 var far=1000;
 
 camara=new THREE.PerspectiveCamera(fov,aspect,near,far);
-camara.position.z=20;
+camara.position.z=30;
 camara.position.x=0;
 camara.position.y=0;
 camara.rotation.x=Math.PI/6;
@@ -85,8 +85,8 @@ function loop()
   //camara.position.z = Math.cos( timer ) * 100;
   //camara.position.y = Math.sin( timer ) * 100;
   //camara.lookAt( escena.position );
-  //camara.position.z=Math.cos( timer ) * 10;
-   //camara.position.x=Math.cos( timer ) * 10;
+  camara.position.z=Math.cos( timer ) * 5;
+   camara.position.x=Math.cos( timer ) * 5;
   renderer.render(escena,camara);
 }
 
