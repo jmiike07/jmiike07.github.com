@@ -6,7 +6,7 @@ THREE.ImageUtils.crossOrigin = '';
 var forma=new THREE.CylinderGeometry(1,1,8,50);
 var forma2=new THREE.CylinderGeometry(2,2,10,50);
 var material=new THREE.MeshPhongMaterial({color: 0xFF4500});
-var floor=new THREE.Mesh(new THREE.BoxGeometry(40,40,10), new THREE.MeshPhongMaterial({map: texture}));
+var floor=new THREE.Mesh(new THREE.BoxGeometry(35,35,10), new THREE.MeshPhongMaterial({map: texture}));
 floor.position.z=-10;
 floor.position.x=-1;
 floor.position.y=15;
@@ -86,9 +86,9 @@ function loop()
   //camara.position.z = Math.cos( timer ) * 100;
   //camara.position.y = Math.sin( timer ) * 100;
   //camara.lookAt( escena.position );
-  camara.position.z=Math.cos( timer ) * 30;
+  camara.position.z=Math.cos( timer ) * 25;
    camara.position.x=Math.cos( timer ) * 20;
-   camara.rotation.z += paso;
+   //camara.rotation.z += paso;
   renderer.render(escena,camara);
 }
 
