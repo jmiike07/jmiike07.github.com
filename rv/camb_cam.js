@@ -15,7 +15,7 @@ floor.position.y=15;
 luzPuntual=new THREE.PointLight(0xFFFFFF);
 luzPuntual.position.x=0;
 luzPuntual.position.y=0;
-luzPuntual.position.z=50;
+luzPuntual.position.z=100;
 
 malla=new THREE.Mesh(forma,material);
 malla.position.x=-1;
