@@ -84,8 +84,8 @@ function loop()
   //camara.position.z = Math.cos( timer ) * 100;
   //camara.position.y = Math.sin( timer ) * 100;
   //camara.lookAt( escena.position );
-  camara.position.z=Math.cos( timer ) * 10;
-   camara.position.x=Math.cos( timer ) * 10;
+  //camara.position.z=Math.cos( timer ) * 10;
+   //camara.position.x=Math.cos( timer ) * 10;
   renderer.render(escena,camara);
 }
 
