@@ -1,3 +1,23 @@
+
+document.onkeydown=teclado;
+
+    function teclado(evento){
+      evento=evento||window.event;
+    	
+    	if(evento.keyCode=='38'){  //flecha arriba   
+    		camara=new THREE.PerspectiveCamera(fov,aspect,near,far);
+    	}
+    	else if(evento.keyCode=='40'){  //flecha abajo
+    		camara=new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, - 500, 1000 );
+    	}
+    	
+    	camara.position.z=20;
+camara.position.x=0;
+camara.position.y=0;
+camara.rotation.x=Math.PI/6;
+    }
+
+
 function setup(){
 
 THREE.ImageUtils.crossOrigin = '';
@@ -42,11 +62,6 @@ var aspect=window.innerWidth/window.innerHeight;
 var near=0.1;
 var far=1000;
 
-camara=new THREE.PerspectiveCamera(fov,aspect,near,far);
-camara.position.z=20;
-camara.position.x=0;
-camara.position.y=0;
-camara.rotation.x=Math.PI/6;
 
 //var Perspectiva=new THREE.PerspectiveCamera(fov,aspect,near,far);
 //var Orientada=new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, - 500, 1000 ); 
