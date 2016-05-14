@@ -1,7 +1,7 @@
 function setup(){
 
 THREE.ImageUtils.crossOrigin = '';
-  	texture = THREE.ImageUtils.loadTexture('C:\Users\José Miguel Oropeza\Desktop\Robot\cuadro.jpg')
+  	texture = THREE.ImageUtils.loadTexture('http://jmiike07.github.io/rv/cuadro.jpg')
 
 var forma=new THREE.CylinderGeometry(1,1,8,50);
 var forma2=new THREE.CylinderGeometry(2,2,10,50);
