@@ -12,7 +12,7 @@ floor.position.x=-1;
 floor.position.y=15;
 
 
-luzPuntual=new THREE.PointLight(0xFFFFCC);
+luzPuntual=new THREE.PointLight(0xFFFFFF);
 luzPuntual.position.x=0;
 luzPuntual.position.y=0;
 luzPuntual.position.z=50;
