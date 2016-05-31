@@ -277,15 +277,18 @@ function setup(){
  luzPuntual.position.x=0;  
  luzPuntual.position.y=10;
  luzPuntual.position.z=30;
- camara=new THREE.PerspectiveCamera();
- //camara.rotation.x=Math.PI/20;
- //camara.rotation.y=Math.PI/10;
- //camara.rotation.z=Math.PI/2;
- camara.position.z=50;
+ 
+ camara1 = new THREE.OrthographicCamera( 31 / -2, 27 / 2, 31/ 2, 29/ - 2, 10, 1000 );
+ camara1.position.z=50;
+
+ camara2 = new THREE.PerspectiveCamera( );
+ camara2.position.z=5;
+ 
  renderer = new THREE.WebGLRenderer();
  renderer.setSize(window.innerHeight*0.95, window.innerHeight*0.95);
  document.body.appendChild(renderer.domElement);
- entorno.add(camara);
+ entorno.add(camara1);
+ entorno.add(camara2);
  entorno.add(luzPuntual);
 
 
@@ -297,8 +300,12 @@ function loop(){
  entorno.sense();
  entorno.plan();
  entorno.act();
- renderer.render(entorno,camara);
-	
+camara2.position.x=px;
+ camara2.position.y=py;
+ if(keyboard.pressed("P")||keyboard.pressed("p"))
+  renderer.render(entorno,camara2);
+ else  
+  renderer.render(entorno,camara1);
 
 }
 
