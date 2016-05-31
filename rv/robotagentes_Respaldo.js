@@ -106,7 +106,10 @@ Target.prototype=new THREE.Mesh();
 
 
 function Wall(size,x=0,y=0){
- THREE.Mesh.call(this,new THREE.BoxGeometry(size,size,size), new THREE.MeshNormalMaterial()); 
+ 
+ THREE.ImageUtils.crossOrigin = '';
+ var textura = THREE.ImageUtils.loadTexture('./android.jpg');
+ THREE.Mesh.call(this,new THREE.BoxGeometry(size,size,size), THREE.MeshPhongMaterial({map:textura}); 
  this.size=size;
  this.position.x=x;
  this.position.y=y;
