@@ -22,7 +22,7 @@ function Robot(){
  this.brazI= new THREE.Mesh(new THREE.CylinderGeometry(0.33,0.33,0.4),new THREE.MeshPhongMaterial({map:textura}));
  this.brazD= new THREE.Mesh(new THREE.CylinderGeometry(0.33,0.33,0.4),new THREE.MeshPhongMaterial({map:textura}));
  
- this.esfera.scale.set(.2,.2,.2);
+ /*this.esfera.scale.set(.2,.2,.2);
  this.Cuerpo.scale.set(.2,.2,.2);
  this.Antena1.scale.set(.2,.2,.2);
  this.Antena2.scale.set(.2,.2,.2);
@@ -32,7 +32,7 @@ function Robot(){
  this.BrazoI.scale.set(.2,.2,.2);
  this.BrazoD.scale.set(.2,.2,.2);
  this.brazI.scale.set(.2,.2,.2);
- this.brazD.scale.set(.2,.2,.2);
+ this.brazD.scale.set(.2,.2,.2);*/
  
  this.Cuello.position.y=2.4;
  this.esfera.position.y=2.4;
