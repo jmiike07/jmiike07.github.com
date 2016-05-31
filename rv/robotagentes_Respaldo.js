@@ -276,7 +276,9 @@ function setup(){
 
  entorno=new Environment();
  entorno.setMap(mapa);
- var textura = THREE.ImageUtils.loadTexture('http://jmiike07.github.io/rv/piedra.jpg')
+ 
+ THREE.ImageUtils.crossOrigin = '';
+ var textura = THREE.ImageUtils.loadTexture('./piedra.jpg');
  var floor=new THREE.Mesh(new THREE.BoxGeometry(40,40,0.2), new THREE.MeshLambertMaterial({map : textura }));
 
  floor.position.z=-0.5;
