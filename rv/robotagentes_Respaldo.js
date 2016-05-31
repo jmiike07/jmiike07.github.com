@@ -285,7 +285,7 @@ function setup(){
  
  
  
- luzPuntual = new THREE.PointLight(0xffffff);
+ luzPuntual = new THREE.PointLight(0xffcc00);
  luzPuntual.position.x=0;  
  luzPuntual.position.y=10;
  luzPuntual.position.z=30;
