@@ -278,7 +278,7 @@ function setup(){
  entorno.setMap(mapa);
  
  THREE.ImageUtils.crossOrigin = '';
- var textura = THREE.ImageUtils.loadTexture('./galaxia.jpg');
+ var textura = THREE.ImageUtils.loadTexture('./metal.jpg');
  var floor=new THREE.Mesh(new THREE.BoxGeometry(40,40,0.2), new THREE.MeshLambertMaterial({map : textura }));
 
  floor.position.z=-0.5;
