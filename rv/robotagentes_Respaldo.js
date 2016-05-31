@@ -8,7 +8,7 @@ Sensor.prototype=new THREE.Raycaster();
 function Robot(){
  THREE.Object3D.call(this);
  THREE.ImageUtils.crossOrigin = '';
- var textura = THREE.ImageUtils.loadTexture('./ironman.jpg');
+ var textura = THREE.ImageUtils.loadTexture('./android.jpg');
 
  this.esfera= new THREE.Mesh(new THREE.SphereGeometry(2.5,100,100,0,6.3,0,1.57),new THREE.MeshPhongMaterial({map:textura}));
  this.Cuerpo= new THREE.Mesh(new THREE.CylinderGeometry(2.5, 2.5, 4.5,100),new THREE.MeshPhongMaterial({map:textura}));
@@ -105,7 +105,7 @@ function Target(size,x=0,y=0){
 Target.prototype=new THREE.Mesh();
 
 
-function Wall(size,x=0,y=0){
+function Pared(size,x=0,y=0){
  
  THREE.ImageUtils.crossOrigin = '';
  var textura = THREE.ImageUtils.loadTexture('./ladrillorojo.jpg');
@@ -114,7 +114,7 @@ function Wall(size,x=0,y=0){
  this.position.x=x;
  this.position.y=y;
 }
-Wall.prototype=new THREE.Mesh();
+pared.prototype=new THREE.Mesh();
 
 
 Environment.prototype.setMap=function(map){
@@ -122,7 +122,7 @@ Environment.prototype.setMap=function(map){
  for(var i=0;i<map.length;i++){
   for(var j=0;j<map.length;j++){
    if(map[i][j]==="x")
-    this.add(new Wall(1, j-offset,-(i-offset)));
+    this.add(new Pared(1, j-offset,-(i-offset)));
    else if(map[i][j]==="r")
     this.add(new RBA(j-offset,-(i-offset)));
    else if(map[i][j]==="t")
@@ -177,25 +177,25 @@ RBA.prototype.plan = function(environment){
 
 
   if(this.sensor.colision==false)
-  this.actuator.commands.push('Derecho');
+  this.actuator.commands.push('Sigue');
 
 else if(px==10.499999999999975 && py==11.599999999999953)
-this.actuator.commands.push('Stop');
+this.actuator.commands.push('Para');
 else if(this.sensor3.colision==true && this.sensor5.colision==true)
-  this.actuator.commands.push('RotarDerecha');
+  this.actuator.commands.push('Derecha');
 
 else if(this.sensor3.colision==true && this.sensor4.colision==true)
-  this.actuator.commands.push('RotarDerecha');
+  this.actuator.commands.push('Derecha');
 
 else if(this.sensor2.colision==true && this.sensor4.colision==false)
-  this.actuator.commands.push('RotarIzquierda');
+  this.actuator.commands.push('Izquierda');
 
 
  else if(this.sensor.colision==true && this.sensor2.colision==true)
-   this.actuator.commands.push('RotarIzquierda');
+   this.actuator.commands.push('Izquierda');
 
 else if(this.sensor.colision==true )
-  this.actuator.commands.push('RotarIzquierda');
+  this.actuator.commands.push('Izquierda');
 
 }
 
@@ -211,7 +211,7 @@ RBA.prototype.act=function(environment){
 
 RBA.prototype.operations = {};
 
-RBA.prototype.operations.Derecho = function(robot,step){
+RBA.prototype.operations.Sigue = function(robot,step){
 px=robot.position.x;
 py=robot.position.y;
 
@@ -223,7 +223,7 @@ py=robot.position.y;
 };
 
 
-RBA.prototype.operations.RotarDerecha = function(robot,angulo){
+RBA.prototype.operations.Derecha = function(robot,angulo){
  if(angulo==undefined){
   angulo=-Math.PI/2;
  }
@@ -231,14 +231,14 @@ RBA.prototype.operations.RotarDerecha = function(robot,angulo){
 };
 
 
-RBA.prototype.operations.RotarIzquierda = function(robot,angulo){
+RBA.prototype.operations.Izquierda = function(robot,angulo){
  if(angulo==undefined){
   angulo=Math.PI/2;
  }
  robot.rotation.z+=angulo;
 };
  
-RBA.prototype.operations.Stop = function(robot){
+RBA.prototype.operations.Para = function(robot){
 };
 
 function setup(){
