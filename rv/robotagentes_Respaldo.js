@@ -282,7 +282,7 @@ function setup(){
  camara1.position.z=50;
 
  camara2 = new THREE.PerspectiveCamera( );
- camara2.position.z=5;
+ camara2.position.z=50;
  
  renderer = new THREE.WebGLRenderer();
  renderer.setSize(window.innerHeight*0.95, window.innerHeight*0.95);
