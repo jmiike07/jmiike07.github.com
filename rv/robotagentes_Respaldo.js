@@ -114,7 +114,7 @@ function Pared(size,x=0,y=0){
  this.position.x=x;
  this.position.y=y;
 }
-pared.prototype=new THREE.Mesh();
+Pared.prototype=new THREE.Mesh();
 
 
 Environment.prototype.setMap=function(map){
