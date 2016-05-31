@@ -276,6 +276,13 @@ function setup(){
 
  entorno=new Environment();
  entorno.setMap(mapa);
+ 
+ var floor=new THREE.Mesh(new THREE.BoxGeometry(31,31,0.1), new THREE.MeshBasicMaterial({color:0xffffff}));
+
+ floor.position.z=-0.5;
+ 
+ 
+ 
  luzPuntual = new THREE.PointLight(0xffffff);
  luzPuntual.position.x=0;  
  luzPuntual.position.y=10;
@@ -294,7 +301,10 @@ function setup(){
  entorno.add(camO);
  entorno.add(camP);
  entorno.add(luzPuntual);
-
+ entorno.add(floor);
+renderer.shadowMap.enabled=true;
+ floor.receiveShadow=true;
+ luzPuntual.castShadow=true;
 
 
 }
