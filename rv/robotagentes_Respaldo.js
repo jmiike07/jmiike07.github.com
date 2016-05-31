@@ -310,6 +310,7 @@ camara2.position.x=px;
 }
 
 var entorno,luzPuntual,robot,step,angulo,camara,renderer;
+var keyboard = new THREEx.KeyboardState();
 
 setup();
 loop();
