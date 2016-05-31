@@ -22,10 +22,10 @@ function Robot(){
  this.brazI= new THREE.Mesh(new THREE.CylinderGeometry(0.33,0.33,0.4),new THREE.MeshPhongMaterial({map:textura}));
  this.brazD= new THREE.Mesh(new THREE.CylinderGeometry(0.33,0.33,0.4),new THREE.MeshPhongMaterial({map:textura}));
  
- this.esfera.scale.set(.5,.5,.5);
- this.Cuerpo.scale.set(.5,.5,.5);
- this.Antena1.scale.set(.5,.5,.5);
- this.Antena2.scale.set(.5,.5,.5);
+ this.esfera.scale.set(.2,.2,.2);
+ this.Cuerpo.scale.set(.2,.2,.2);
+ this.Antena1.scale.set(.2,.2,.2);
+ this.Antena2.scale.set(.2,.2,.2);
  this.Cuello.scale.set(.2,.2,.2);
  this.PieI.scale.set(.2,.2,.2);
  this.PieD.scale.set(.2,.2,.2);
