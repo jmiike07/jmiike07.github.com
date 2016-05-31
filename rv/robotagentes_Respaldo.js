@@ -290,7 +290,7 @@ function setup(){
  luzPuntual.position.y=10;
  luzPuntual.position.z=30;
  
- camO = new THREE.OrthographicCamera( 31 / -2, 27 / 2, 31/ 2, 29/ - 2, 10, 1000 );
+ camO = new THREE.OrthographicCamera( 40 / -2, 30 / 2, 32/ 2, 30/ - 2, 10, 1000 );
  camO.position.z=50;
 
  camP = new THREE.PerspectiveCamera( );
